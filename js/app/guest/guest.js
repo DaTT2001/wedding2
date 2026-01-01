@@ -254,10 +254,10 @@ export const guest = (() => {
         const url = new URL('https://calendar.google.com/calendar/render');
         const data = new URLSearchParams({
             action: 'TEMPLATE',
-            text: 'Đám cưới của Công Đạt & Lê Thương',
+            text: 'Đám cưới của Lê Thương & Công Đạt',
             dates: `${formatDate('2026-01-25 08:00')}/${formatDate('2026-01-26 20:00')}`,
             details: 'Với tất cả lòng trân trọng, chúng tôi kính mời quý vị bớt chút thời gian quý báu đến tham dự lễ thành hôn của chúng tôi. Sự hiện diện và những lời chúc phúc của quý vị chính là niềm hạnh phúc và vinh dự lớn lao đối với gia đình chúng tôi. Xin chân thành cảm ơn.',
-            location: '6JFC+J6C Yên Lạc, Vĩnh Phúc',
+            location: '7FPX+FPH Vĩnh Tường, Vĩnh Phúc',
             ctz: config.get('tz'),
         });
 
@@ -326,6 +326,9 @@ export const guest = (() => {
         config = storage('config');
         information = storage('information');
 
+        // ensure Google Calendar button is wired after `config` is available
+        buildGoogleCalendar();
+        
         const vid = video.init();
         const img = image.init();
         const aud = audio.init();
